@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Libas — Timeless Ethnic Wear for Women</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #FAF6F0;
+      --cream:   #F3ECE1;
+      --ink:     #2B2420;
+      --rose:    #B5826E;
+      --rose-dk: #9A6553;
+      --sage:    #8A9080;
+      --gold:    #C9A24B;
+      --muted:   #8B8178;
+      --border:  #E5DCCF;
+      --white:   #FFFFFF;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Jost', sans-serif; background: var(--bg); color: var(--ink); overflow-x: hidden; }
+
+    /* ── ANNOUNCEMENT BAR ── */
+    .announce {
+      background: var(--ink); color: var(--bg);
+      text-align: center; padding: 8px;
+      font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5vw; height: 76px;
+      background: rgba(250,246,240,0.96); backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-left, .nav-right { flex: 1; display: flex; gap: 28px; align-items: center; }
+    .nav-right { justify-content: flex-end; }
+    .nav-left a, .nav-right a {
+      font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--ink); text-decoration: none; font-weight: 400;
+      transition: color 0.2s;
+    }
+    .nav-left a:hover, .nav-right a:hover { color: var(--rose); }
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.9rem; font-weight: 600; letter-spacing: 0.15em;
+      color: var(--ink); text-decoration: none; text-align: center;
+    }
+    .nav-icon { font-size: 1rem; }
+
+    /* ── HERO ── */
+    #home {
+      min-height: calc(100vh - 76px);
+      display: grid; grid-template-columns: 1fr 1fr;
+    }
+    .hero-text {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 60px 6vw; background: var(--cream);
+    }
+    .hero-eyebrow {
+      font-size: 0.75rem; letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--rose); margin-bottom: 24px;
+    }
+    .hero-text h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.8rem, 5vw, 4.5rem);
+      font-weight: 500; line-height: 1.05; margin-bottom: 24px;
+    }
+    .hero-text h1 em { font-style: italic; color: var(--rose-dk); }
+    .hero-text p { font-size: 1rem; color: var(--muted); line-height: 1.85; max-width: 380px; margin-bottom: 36px; }
+    .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+    .btn-fill {
+      background: var(--ink); color: var(--bg);
+      padding: 15px 36px; font-size: 0.78rem;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      text-decoration: none; transition: background 0.25s;
+    }
+    .btn-fill:hover { background: var(--rose-dk); }
+    .btn-line {
+      border-bottom: 1px solid var(--ink); color: var(--ink);
+      padding: 4px 2px; font-size: 0.78rem;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      text-decoration: none; align-self: center;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .btn-line:hover { color: var(--rose); border-color: var(--rose); }
+
+    .hero-visual {
+      background: linear-gradient(160deg, #D9C5B4 0%, #C4A998 50%, #B5826E 100%);
+      position: relative; display: flex;
+      align-items: center; justify-content: center;
+      overflow: hidden;
+    }
+    .hero-visual::before {
+      content: ''; position: absolute;
+      width: 140%; height: 140%;
+      background: repeating-linear-gradient(45deg, transparent, transparent 60px, rgba(255,255,255,0.03) 60px, rgba(255,255,255,0.03) 120px);
+    }
+    .hero-frame {
+      width: 70%; height: 78%;
+      border: 1px solid rgba(255,255,255,0.4);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      position: relative; z-index: 1; text-align: center;
+      color: var(--white);
+    }
+    .hero-frame .big-emoji { font-size: 6rem; margin-bottom: 16px; }
+    .hero-frame .frame-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem; font-style: italic; font-weight: 400;
+      letter-spacing: 0.05em;
+    }
+    .hero-frame .frame-sub {
+      font-size: 0.7rem; letter-spacing: 0.25em;
+      text-transform: uppercase; margin-top: 8px; opacity: 0.85;
+    }
+    .hero-badge-circle {
+      position: absolute; top: 40px; right: 40px;
+      width: 100px; height: 100px; border-radius: 50%;
+      background: var(--gold); color: var(--ink);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase;
+      text-align: center; z-index: 2; line-height: 1.3;
+      transform: rotate(-12deg);
+    }
+    .hero-badge-circle strong { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; display: block; }
+
+    /* ── MARQUEE ── */
+    .brand-marquee {
+      background: var(--ink); color: var(--bg);
+      padding: 16px 0; overflow: hidden;
+    }
+    .bm-track { display: flex; gap: 60px; width: max-content; animation: scroll 25s linear infinite; }
+    @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .bm-item { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-style: italic; letter-spacing: 0.05em; white-space: nowrap; display: flex; align-items: center; gap: 60px; }
+    .bm-item::after { content: '✦'; font-size: 0.7rem; opacity: 0.5; }
+
+    /* ── SECTIONS ── */
+    .sec-head { text-align: center; padding: 90px 5vw 0; }
+    .sec-eyebrow { font-size: 0.72rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--rose); margin-bottom: 16px; }
+    .sec-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 4vw, 3.4rem); font-weight: 500; line-height: 1.1; }
+    .sec-title em { font-style: italic; color: var(--rose-dk); }
+    .sec-desc { color: var(--muted); font-size: 0.95rem; line-height: 1.8; max-width: 460px; margin: 16px auto 0; }
+
+    /* ── COLLECTION ── */
+    #collection { padding: 0 5vw 90px; }
+    .collection-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 24px; margin-top: 56px;
+    }
+    .product-card { cursor: pointer; }
+    .product-img {
+      aspect-ratio: 3/4; position: relative; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 4rem; margin-bottom: 16px;
+    }
+    .product-img .quick-view {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      background: var(--ink); color: var(--bg);
+      text-align: center; padding: 14px;
+      font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+      transform: translateY(100%); transition: transform 0.3s;
+    }
+    .product-card:hover .quick-view { transform: translateY(0); }
+    .product-tag {
+      position: absolute; top: 14px; left: 14px;
+      background: var(--bg); color: var(--ink);
+      font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 5px 12px; z-index: 1;
+    }
+    .product-tag.sale { background: var(--rose-dk); color: var(--white); }
+    .product-info { text-align: center; }
+    .product-name { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 500; margin-bottom: 4px; }
+    .product-cat { font-size: 0.72rem; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 8px; }
+    .product-price { font-size: 0.95rem; color: var(--ink); }
+    .product-price .old { color: var(--muted); text-decoration: line-through; margin-right: 8px; font-size: 0.85rem; }
+    .product-price .new { color: var(--rose-dk); font-weight: 500; }
+
+    /* ── ABOUT ── */
+    #about { background: var(--cream); padding: 100px 5vw; }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; max-width: 1100px; margin: 0 auto; }
+    .about-visual-box {
+      aspect-ratio: 4/5; background: linear-gradient(160deg, #C4A998, #B5826E);
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+    }
+    .about-visual-box .inner-frame {
+      width: 80%; height: 85%; border: 1px solid rgba(255,255,255,0.4);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 5rem; color: rgba(255,255,255,0.9);
+    }
+    .about-visual-box .est {
+      position: absolute; bottom: -24px; right: -24px;
+      background: var(--ink); color: var(--bg);
+      padding: 20px 28px; text-align: center;
+    }
+    .about-visual-box .est strong { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; display: block; }
+    .about-visual-box .est span { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; }
+    .about-content .sec-eyebrow { text-align: left; }
+    .about-content h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 500; line-height: 1.15; margin-bottom: 24px; }
+    .about-content h2 em { font-style: italic; color: var(--rose-dk); }
+    .about-content p { color: var(--muted); line-height: 1.9; margin-bottom: 18px; font-size: 0.95rem; }
+    .about-features { display: flex; gap: 40px; margin-top: 32px; }
+    .af-item strong { font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: var(--rose-dk); display: block; }
+    .af-item span { font-size: 0.78rem; color: var(--muted); letter-spacing: 0.05em; }
+
+    /* ── LOOKBOOK ── */
+    #lookbook { padding: 100px 5vw; }
+    .lookbook-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: 200px; gap: 16px; margin-top: 56px;
+    }
+    .look-item {
+      position: relative; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 3rem; cursor: pointer;
+    }
+    .look-item.tall { grid-row: span 2; }
+    .look-item.wide { grid-column: span 2; }
+    .look-overlay {
+      position: absolute; inset: 0;
+      background: rgba(43,36,32,0.4);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      opacity: 0; transition: opacity 0.3s; color: var(--white); text-align: center;
+    }
+    .look-item:hover .look-overlay { opacity: 1; }
+    .look-overlay .look-title { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-style: italic; }
+    .look-overlay .look-sub { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; margin-top: 6px; }
+
+    /* ── NEWSLETTER ── */
+    .newsletter { background: var(--ink); color: var(--bg); padding: 80px 5vw; text-align: center; }
+    .newsletter h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 3.5vw, 3rem); font-weight: 500; margin-bottom: 16px; }
+    .newsletter h2 em { font-style: italic; color: var(--gold); }
+    .newsletter p { color: rgba(250,246,240,0.7); margin-bottom: 36px; font-size: 0.95rem; }
+    .news-form { display: flex; max-width: 440px; margin: 0 auto; gap: 0; }
+    .news-form input {
+      flex: 1; padding: 15px 20px; border: 1px solid rgba(250,246,240,0.3);
+      background: transparent; color: var(--bg); font-family: 'Jost', sans-serif;
+      font-size: 0.9rem; border-right: none;
+    }
+    .news-form input::placeholder { color: rgba(250,246,240,0.5); }
+    .news-form input:focus { outline: none; border-color: var(--gold); }
+    .news-form button {
+      padding: 15px 32px; background: var(--gold); color: var(--ink);
+      border: none; font-size: 0.75rem; letter-spacing: 0.12em;
+      text-transform: uppercase; cursor: pointer; font-family: 'Jost', sans-serif;
+      transition: background 0.2s; font-weight: 500;
+    }
+    .news-form button:hover { background: #d9b35c; }
+
+    /* ── CONTACT ── */
+    #contact { padding: 100px 5vw; }
+    .contact-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; max-width: 1000px; margin: 56px auto 0; }
+    .contact-col { text-align: center; }
+    .contact-col .cc-icon { font-size: 1.6rem; margin-bottom: 16px; }
+    .contact-col h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 500; margin-bottom: 12px; }
+    .contact-col p { font-size: 0.9rem; color: var(--muted); line-height: 1.8; }
+    .contact-col a { color: var(--rose-dk); text-decoration: none; }
+    .socials { display: flex; gap: 20px; justify-content: center; margin-top: 16px; }
+    .socials a { font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--border); padding-bottom: 2px; transition: color 0.2s, border-color 0.2s; }
+    .socials a:hover { color: var(--rose); border-color: var(--rose); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--cream); border-top: 1px solid var(--border);
+      padding: 48px 5vw 28px; text-align: center;
+    }
+    .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 2rem; letter-spacing: 0.2em; margin-bottom: 16px; }
+    .footer-tagline { font-size: 0.8rem; color: var(--muted); letter-spacing: 0.1em; margin-bottom: 32px; }
+    .footer-bottom { border-top: 1px solid var(--border); padding-top: 24px; font-size: 0.78rem; color: var(--muted); }
+    .footer-bottom a { color: var(--rose-dk); text-decoration: none; }
+
+    /* ── MOBILE ── */
+    @media (max-width: 768px) {
+      #home { grid-template-columns: 1fr; }
+      .hero-visual { min-height: 420px; }
+      .collection-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+      .about-grid { grid-template-columns: 1fr; gap: 48px; }
+      .lookbook-grid { grid-template-columns: 1fr 1fr; }
+      .look-item.wide { grid-column: span 2; }
+      .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+      .nav-left { display: none; }
+      .nav-right { gap: 16px; }
+      .nav-logo { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="announce">Free Delivery on Orders Over PKR 5,000 · Shop the New Summer Lawn Collection</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-left">
+    <a href="#collection">Collection</a>
+    <a href="#lookbook">Lookbook</a>
+    <a href="#about">About</a>
+  </div>
+  <a href="#home" class="nav-logo">LIBAS</a>
+  <div class="nav-right">
+    <a href="#contact">Contact</a>
+    <a href="#" class="nav-icon">♡</a>
+    <a href="#" class="nav-icon">🛍 (0)</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-text">
+    <div class="hero-eyebrow">Summer Collection 2025</div>
+    <h1>Grace in<br>Every <em>Thread</em></h1>
+    <p>Discover timeless ethnic wear crafted for the modern woman. Premium lawn, elegant kurtis, and unstitched fabrics — designed in Pakistan, made to be cherished.</p>
+    <div class="hero-btns">
+      <a href="#collection" class="btn-fill">Shop Collection</a>
+      <a href="#lookbook" class="btn-line">View Lookbook</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-badge-circle">
+      <strong>30%</strong>
+      Off Summer
+    </div>
+    <div class="hero-frame">
+      <div class="big-emoji">👗</div>
+      <div class="frame-text">New Arrivals</div>
+      <div class="frame-sub">Lawn · Kurtis · Unstitched</div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="brand-marquee">
+  <div class="bm-track">
+    <span class="bm-item">Premium Lawn</span>
+    <span class="bm-item">Embroidered Kurtis</span>
+    <span class="bm-item">Unstitched Fabric</span>
+    <span class="bm-item">Summer Collection</span>
+    <span class="bm-item">Free Delivery</span>
+    <span class="bm-item">Premium Lawn</span>
+    <span class="bm-item">Embroidered Kurtis</span>
+    <span class="bm-item">Unstitched Fabric</span>
+    <span class="bm-item">Summer Collection</span>
+    <span class="bm-item">Free Delivery</span>
+  </div>
+</div>
+
+<!-- COLLECTION -->
+<div class="sec-head">
+  <div class="sec-eyebrow">Shop By Style</div>
+  <h2 class="sec-title">The <em>Collection</em></h2>
+  <p class="sec-desc">Handpicked pieces from our latest summer line. Every design tells a story of elegance and craftsmanship.</p>
+</div>
+<section id="collection">
+  <div class="collection-grid">
+    <div class="product-card">
+      <div class="product-img" style="background: linear-gradient(160deg, #E8D5C4, #D4A5A5);">
+        <span class="product-tag">New</span>
+        👗
+        <div class="quick-view">Quick View</div>
+      </div>
+      <div class="product-info">
+        <div class="product-name">Gulrukh 3-Piece</div>
+        <div class="product-cat">Embroidered Lawn</div>
+        <div class="product-price"><span class="new">PKR 4,500</span></div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-img" style="background: linear-gradient(160deg, #D4C5E8, #A5A5D4);">
+        <span class="product-tag sale">Sale</span>
+        👚
+        <div class="quick-view">Quick View</div>
+      </div>
+      <div class="product-info">
+        <div class="product-name">Mahnoor Kurti</div>
+        <div class="product-cat">Cotton Net</div>
+        <div class="product-price"><span class="old">PKR 3,200</span><span class="new">PKR 2,240</span></div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-img" style="background: linear-gradient(160deg, #C4E8D5, #A5D4B5);">
+        👗
+        <div class="quick-view">Quick View</div>
+      </div>
+      <div class="product-info">
+        <div class="product-name">Sana 2-Piece</div>
+        <div class="product-cat">Printed Lawn</div>
+        <div class="product-price"><span class="new">PKR 3,800</span></div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-img" style="background: linear-gradient(160deg, #E8DCC4, #D4C0A5);">
+        <span class="product-tag">Bestseller</span>
+        🥻
+        <div class="quick-view">Quick View</div>
+      </div>
+      <div class="product-info">
+        <div class="product-name">Zoya Unstitched</div>
+        <div class="product-cat">3-Piece Lawn</div>
+        <div class="product-price"><span class="new">PKR 5,200</span></div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-img" style="background: linear-gradient(160deg, #E8C4D5, #D4A5C0);">
+        👚
+        <div class="quick-view">Quick View</div>
+      </div>
+      <div class="product-info">
+        <div class="product-name">Hareem Kurti</div>
+        <div class="product-cat">Embroidered Cotton</div>
+        <div class="product-price"><span class="new">PKR 2,800</span></div>
+      </div>
+    </div>
+    <div class="product-card">
+      <div class="product-img" style="background: linear-gradient(160deg, #C4D5E8, #A5C0D4);">
+        <span class="product-tag sale">Sale</span>
+        👗
+        <div class="quick-view">Quick View</div>
+      </div>
+      <div class="product-info">
+        <div class="product-name">Eshal 3-Piece</div>
+        <div class="product-cat">Luxury Chiffon</div>
+        <div class="product-price"><span class="old">PKR 7,500</span><span class="new">PKR 5,250</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-grid">
+    <div class="about-visual-box">
+      <div class="inner-frame">🧵</div>
+      <div class="est">
+        <strong>2018</strong>
+        <span>Established</span>
+      </div>
+    </div>
+    <div class="about-content">
+      <div class="sec-eyebrow">Our Story</div>
+      <h2>Crafted with <em>Love</em>, Worn with Pride</h2>
+      <p>Libas was born from a simple belief — that every woman deserves to feel beautiful in clothing that honors both tradition and modern elegance.</p>
+      <p>From our atelier in Lahore, we work with skilled local artisans to create lawn, kurtis, and unstitched fabrics using premium materials and timeless designs. Each piece is a celebration of Pakistani craftsmanship.</p>
+      <div class="about-features">
+        <div class="af-item">
+          <strong>50k+</strong>
+          <span>Happy Customers</span>
+        </div>
+        <div class="af-item">
+          <strong>200+</strong>
+          <span>Unique Designs</span>
+        </div>
+        <div class="af-item">
+          <strong>100%</strong>
+          <span>Premium Fabric</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LOOKBOOK -->
+<div class="sec-head">
+  <div class="sec-eyebrow">Style Inspiration</div>
+  <h2 class="sec-title">The <em>Lookbook</em></h2>
+  <p class="sec-desc">Get inspired by our seasonal styling. Mix, match, and make every look your own.</p>
+</div>
+<section id="lookbook">
+  <div class="lookbook-grid">
+    <div class="look-item tall" style="background: linear-gradient(160deg, #D4A5A5, #B5826E);">
+      🌸
+      <div class="look-overlay">
+        <div class="look-title">Summer Florals</div>
+        <div class="look-sub">Lawn Collection</div>
+      </div>
+    </div>
+    <div class="look-item wide" style="background: linear-gradient(160deg, #C4A998, #A5A5D4);">
+      ✨
+      <div class="look-overlay">
+        <div class="look-title">Festive Edit</div>
+        <div class="look-sub">Embroidered Pieces</div>
+      </div>
+    </div>
+    <div class="look-item" style="background: linear-gradient(160deg, #A5D4B5, #8A9080);">
+      🍃
+      <div class="look-overlay">
+        <div class="look-title">Everyday Ease</div>
+        <div class="look-sub">Cotton Kurtis</div>
+      </div>
+    </div>
+    <div class="look-item" style="background: linear-gradient(160deg, #E8DCC4, #C9A24B);">
+      👑
+      <div class="look-overlay">
+        <div class="look-title">Luxe Formal</div>
+        <div class="look-sub">Chiffon Series</div>
+      </div>
+    </div>
+    <div class="look-item wide" style="background: linear-gradient(160deg, #D4C5E8, #B5826E);">
+      🌺
+      <div class="look-overlay">
+        <div class="look-title">Pastel Dreams</div>
+        <div class="look-sub">Spring Collection</div>
+      </div>
+    </div>
+    <div class="look-item tall" style="background: linear-gradient(160deg, #E8C4D5, #9A6553);">
+      💐
+      <div class="look-overlay">
+        <div class="look-title">Bridal Whispers</div>
+        <div class="look-sub">Premium Line</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<div class="newsletter">
+  <h2>Join the <em>Libas</em> Family</h2>
+  <p>Be the first to know about new collections, exclusive offers, and styling tips.</p>
+  <div class="news-form">
+    <input type="email" placeholder="Enter your email address"/>
+    <button onclick="subscribe()">Subscribe</button>
+  </div>
+  <p id="news-msg" style="margin-top:16px; margin-bottom:0; min-height:18px;"></p>
+</div>
+
+<!-- CONTACT -->
+<div class="sec-head">
+  <div class="sec-eyebrow">Get In Touch</div>
+  <h2 class="sec-title">Visit <em>Us</em></h2>
+</div>
+<section id="contact">
+  <div class="contact-grid">
+    <div class="contact-col">
+      <div class="cc-icon">📍</div>
+      <h4>Flagship Store</h4>
+      <p>MM Alam Road, Gulberg III<br>Lahore, Punjab, Pakistan</p>
+    </div>
+    <div class="contact-col">
+      <div class="cc-icon">💬</div>
+      <h4>Order & Support</h4>
+      <p><a href="tel:+923096455356">+92 309 6455356</a><br>WhatsApp: 11 AM – 9 PM<br><a href="mailto:iamabhashmi@gmail.com">iamabhashmi@gmail.com</a></p>
+    </div>
+    <div class="contact-col">
+      <div class="cc-icon">✦</div>
+      <h4>Follow Us</h4>
+      <p>Stay connected for the latest drops</p>
+      <div class="socials">
+        <a href="#">Instagram</a>
+        <a href="#">Facebook</a>
+        <a href="#">TikTok</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">LIBAS</div>
+  <div class="footer-tagline">TIMELESS ETHNIC WEAR FOR WOMEN</div>
+  <div class="footer-bottom">
+    &copy; 2025 Libas. All rights reserved. · Designed & Developed by <a href="https://qubit.com.pk">Qubit</a>
+  </div>
+</footer>
+
+<script>
+  function subscribe() {
+    const input = document.querySelector('.news-form input');
+    const msg = document.getElementById('news-msg');
+    const email = input.value.trim();
+    if (!email || !email.includes('@')) {
+      msg.textContent = 'Please enter a valid email address.';
+      msg.style.color = '#E8B4B4';
+      return;
+    }
+    msg.textContent = '✓ Thank you for subscribing to Libas!';
+    msg.style.color = '#C9A24B';
+    input.value = '';
+  }
+</script>
+
+</body>
+</html>
